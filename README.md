@@ -34,37 +34,37 @@ This infrastructure includes the following components:
 
 The project is modularized to make it easy to manage and customize. Below is an outline of the project’s file structure:
 
-    ```bash
-    /terraform
-    ├── main.tf                 # Root module, calls other modules (including VPC, ASG, EC2, etc.)
-    ├── variables.tf            # All input variables
-    ├── outputs.tf              # All output values from the Terraform execution
-    ├── providers.tf            # AWS provider configuration for Terraform
-    ├── backend.tf              # S3 backend configuration for state management (already added)
+```bash
+/terraform
+├── main.tf                 # Root module, calls other modules (including VPC, ASG, EC2, etc.)
+├── variables.tf            # All input variables
+├── outputs.tf              # All output values from the Terraform execution
+├── providers.tf            # AWS provider configuration for Terraform
+├── backend.tf              # S3 backend configuration for state management (already added)
 
-    ├── modules/                
-    │   ├── vpc/               # Custom VPC module, which includes networking configurations
-    │   │   ├── main.tf        # VPC resources (subnets, route tables, etc.)
-    │   │   ├── variables.tf   # Variables for VPC (e.g., CIDR blocks)
-    │   │   ├── outputs.tf     # Outputs related to VPC (e.g., VPC ID, subnet IDs)
-    │   │   ├── subnets.tf     # Public and private subnet definitions
-    │   │   ├── route_tables.tf # Definitions for public and private route tables
-    │   │   ├── igw.tf         # Internet Gateway configuration for public subnets
-    │   │   ├── nat_gateway.tf # NAT Gateway configuration for private subnets
-    │   │   ├── alb.tf         # Application Load Balancer configuration in public subnets
+├── modules/
+│   ├── vpc/               # Custom VPC module, which includes networking configurations
+│   │   ├── main.tf        # VPC resources (subnets, route tables, etc.)
+│   │   ├── variables.tf   # Variables for VPC (e.g., CIDR blocks)
+│   │   ├── outputs.tf     # Outputs related to VPC (e.g., VPC ID, subnet IDs)
+│   │   ├── subnets.tf     # Public and private subnet definitions
+│   │   ├── route_tables.tf # Definitions for public and private route tables
+│   │   ├── igw.tf         # Internet Gateway configuration for public subnets
+│   │   ├── nat_gateway.tf # NAT Gateway configuration for private subnets
+│   │   ├── alb.tf         # Application Load Balancer configuration in public subnets
 
-    │   ├── asg/               # Auto Scaling Group module
-    │   │   ├── main.tf        # Resources for the Auto Scaling Group (ASG)
-    │   │   ├── variables.tf   # ASG-related variables (e.g., desired capacity)
-    │   │   ├── outputs.tf     # Outputs related to the ASG (e.g., ASG name)
+│   ├── asg/               # Auto Scaling Group module
+│   │   ├── main.tf        # Resources for the Auto Scaling Group (ASG)
+│   │   ├── variables.tf   # ASG-related variables (e.g., desired capacity)
+│   │   ├── outputs.tf     # Outputs related to the ASG (e.g., ASG name)
 
-    │   ├── ec2/               # EC2 instance module
-    │   │   ├── main.tf        # EC2 instance creation and configuration
-    │   │   ├── variables.tf   # EC2-related variables (e.g., AMI ID, subnet)
-    │   │   ├── outputs.tf     # Outputs related to EC2 instances (e.g., instance IDs)
+│   ├── ec2/               # EC2 instance module
+│   │   ├── main.tf        # EC2 instance creation and configuration
+│   │   ├── variables.tf   # EC2-related variables (e.g., AMI ID, subnet)
+│   │   ├── outputs.tf     # Outputs related to EC2 instances (e.g., instance IDs)
 
-    └── ...                     # Additional modules as needed
-    ```
+└── ...                     # Additional modules as needed
+```
 
 ### Modules Directory
 
@@ -99,10 +99,10 @@ Follow these steps to deploy the infrastructure:
 
 First, clone this repository to your local machine:
 
-    ```bash
+```bash
         git clone https://github.com/BenjaminBurton/terraform_autoscaling.git
         cd terraform_autoscaling
-    ```
+```
 
 ### Step 2: Set Up AWS Credentials
 
