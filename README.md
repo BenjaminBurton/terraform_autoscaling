@@ -100,8 +100,8 @@ Follow these steps to deploy the infrastructure:
 First, clone this repository to your local machine:
 
 ```bash
-        git clone https://github.com/BenjaminBurton/terraform_autoscaling.git
-        cd terraform_autoscaling
+git clone https://github.com/BenjaminBurton/terraform_autoscaling.git
+cd terraform_autoscaling
 ```
 
 ### Step 2: Set Up AWS Credentials
