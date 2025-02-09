@@ -11,24 +11,30 @@ The project also leverages AWS networking components like Internet Gateway (IGW)
 This infrastructure includes the following components:
 
 Custom VPC:
-    CIDR Block: Defines a private network for your resources.
-    Subnets: The VPC contains 2 public subnets (for load balancers and NAT gateways) and 2 private subnets (for EC2 instances).
-    Route Tables: One for public subnet routing (with IGW) and one for private subnets (with NAT gateway for internet access).
+
+- CIDR Block: Defines a private network for your resources.
+- Subnets: The VPC contains 2 public subnets (for load balancers and NAT gateways) and 2 private subnets (for EC2 instances).
+- Route Tables: One for public subnet routing (with IGW) and one for private subnets (with NAT gateway for internet access).
 
 Application Load Balancer (ALB):
-    The ALB is used to distribute incoming traffic evenly across the EC2 instances in the private subnets, improving the availability and fault tolerance of your web application.
+
+- The ALB is used to distribute incoming traffic evenly across the EC2 instances in the private subnets, improving the availability and fault tolerance of your web application.
 
 Auto Scaling Group (ASG):
-    The ASG ensures that your EC2 instances can automatically scale up or down based on traffic demand. The configuration sets a minimum of 2 instances and a maximum of 5 instances, ensuring that there are always enough resources to handle the incoming load.
+
+- The ASG ensures that your EC2 instances can automatically scale up or down based on traffic demand. The configuration sets a minimum of 2 instances and a maximum of 5 instances, ensuring that there are always enough resources to handle the incoming load.
 
 EC2 Instances:
-    EC2 instances are created within private subnets to run your application. These instances are launched with a simple Apache Web Server as part of their user data configuration to serve content.
+
+- EC2 instances are created within private subnets to run your application. These instances are launched with a simple Apache Web Server as part of their user data configuration to serve content.
 
 Security Groups:
-    Security Groups are created for each component (ALB, EC2 instances) to control access. The ALB’s Security Group allows HTTP/HTTPS access, and the EC2 instances' Security Group allows inbound traffic only from the ALB.
+
+- Security Groups are created for each component (ALB, EC2 instances) to control access. The ALB’s Security Group allows HTTP/HTTPS access, and the EC2 instances' Security Group allows inbound traffic only from the ALB.
 
 Remote Backend (S3 & DynamoDB):
-    Terraform’s state is stored remotely in an S3 bucket for consistency, and DynamoDB is used for state locking, preventing race conditions during Terraform runs in team environments.
+
+- Terraform’s state is stored remotely in an S3 bucket for consistency, and DynamoDB is used for state locking, preventing race conditions during Terraform runs in team environments.
 
 ### Project Structure
 
@@ -68,20 +74,20 @@ The project is modularized to make it easy to manage and customize. Below is an 
 
 ### Modules Directory
 
-vpc/: Contains resources for creating a custom VPC, including subnets, route tables, and internet access configurations.
-asg/: Defines the Auto Scaling Group that manages the EC2 instances.
-ec2/: Defines the EC2 instances, including user data scripts to install software and configure them on startup.
-alb/: Contains configurations for setting up the Application Load Balancer.
-internet_gateway/: Configures the internet gateway required for public internet access.
-nat_gateway/: Configures the NAT gateway for private subnet internet access.
+- vpc/: Contains resources for creating a custom VPC, including subnets, route tables, and internet access configurations.
+- asg/: Defines the Auto Scaling Group that manages the EC2 instances.
+- ec2/: Defines the EC2 instances, including user data scripts to install software and configure them on startup.
+- alb/: Contains configurations for setting up the Application Load Balancer.
+- internet_gateway/: Configures the internet gateway required for public internet access.
+- nat_gateway/: Configures the NAT gateway for private subnet internet access.
 
 ### Terraform Directory
 
-main.tf: This file serves as the entry point for the Terraform configuration. It references all the modules that make up the infrastructure.
-variables.tf: Defines all the variables used in the Terraform configuration. These variables allow you to customize the configuration as needed.
-outputs.tf: Defines the outputs that will be displayed after the Terraform run, such as the VPC ID, subnet IDs, and the ALB DNS name.
-providers.tf: Specifies the AWS provider for Terraform, including the region and credentials.
-backend.tf: Configures the backend for storing the Terraform state in S3 and using DynamoDB for state locking.
+- main.tf: This file serves as the entry point for the Terraform configuration. It references all the modules that make up the infrastructure.
+- variables.tf: Defines all the variables used in the Terraform configuration. These variables allow you to customize the configuration as needed.
+- outputs.tf: Defines the outputs that will be displayed after the Terraform run, such as the VPC ID, subnet IDs, and the ALB DNS name.
+- providers.tf: Specifies the AWS provider for Terraform, including the region and credentials.
+- backend.tf: Configures the backend for storing the Terraform state in S3 and using DynamoDB for state locking.
 
 ### Prerequisites
 
@@ -144,10 +150,10 @@ Terraform will prompt you for confirmation. Type yes to proceed.
 
 Once Terraform has successfully applied the changes, the following resources will be provisioned:
 
-VPC: A custom VPC with 2 public and 2 private subnets.
-ALB: An Application Load Balancer (ALB) that distributes incoming traffic.
-ASG: An Auto Scaling Group that dynamically scales EC2 instances based on traffic demand.
-EC2 Instances: EC2 instances running in private subnets with Apache web server.
+- VPC: A custom VPC with 2 public and 2 private subnets.
+- ALB: An Application Load Balancer (ALB) that distributes incoming traffic.
+- ASG: An Auto Scaling Group that dynamically scales EC2 instances based on traffic demand.
+- EC2 Instances: EC2 instances running in private subnets with Apache web server.
 
 ### Step 7: Clean Up Resources
 
