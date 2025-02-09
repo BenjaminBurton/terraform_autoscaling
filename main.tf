@@ -1,9 +1,10 @@
 module "vpc" {
   source = "./modules/vpc"
   vpc_cidr_block = var.vpc_cidr_block
-  public_subnets_cidr_blocks = var.public_subnets_cidr_blocks
-  private_subnets_cidr_blocks = var.private_subnets_cidr_blocks
+  public_subnets_cidr_blocks = var.public_subnet_cidr_blocks
+  private_subnets_cidr_blocks = var.private_subnet_cidr_blocks
 }
+
 
 module "asg" {
   source = "./modules/asg"
