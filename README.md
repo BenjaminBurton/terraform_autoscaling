@@ -82,7 +82,6 @@ The project is modularized to make it easy to manage and customize. Below is an 
     outputs.tf: Defines the outputs that will be displayed after the Terraform run, such as the VPC ID, subnet IDs, and the ALB DNS name.
     providers.tf: Specifies the AWS provider for Terraform, including the region and credentials.
     backend.tf: Configures the backend for storing the Terraform state in S3 and using DynamoDB for state locking.
-    terraform.tfvars: Contains the default values for the variables defined in variables.tf. This file can be customized based on your specific needs.
 
 ### Prerequisites
 
