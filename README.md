@@ -128,7 +128,23 @@ Before applying any configurations, initialize Terraform to download the require
 terraform init
 ```
 
-### Step 4: Review the Terraform Plan
+### Step 4 Validate syntax
+
+ It doesn't interact with your cloud provider or try to create any resources—it simply checks that your Terraform files are syntactically correct and that the configuration is internally consistent.
+
+```bash
+terraform validate
+```
+
+### Step 5 Format the current directory
+
+Ensures that your Terraform code follows a uniform style for readability and maintainability.
+
+```bash
+terraform fmt
+```
+
+### Step 6: Review the Terraform Plan
 
 It’s a good practice to review the execution plan before applying changes. This allows you to see what resources Terraform will create, modify, or delete:
 
@@ -136,7 +152,7 @@ It’s a good practice to review the execution plan before applying changes. Thi
 terraform plan
 ```
 
-### Step 5: Apply the Terraform Configuration
+### Step 7: Apply the Terraform Configuration
 
 Once you’re happy with the plan, apply the configuration to provision the resources:
 
@@ -146,7 +162,7 @@ terraform apply
 
 Terraform will prompt you for confirmation. Type yes to proceed.
 
-### Step 6: Access Your Resources
+### Step 8: Access Your Resources
 
 Once Terraform has successfully applied the changes, the following resources will be provisioned:
 
@@ -155,7 +171,7 @@ Once Terraform has successfully applied the changes, the following resources wil
 - ASG: An Auto Scaling Group that dynamically scales EC2 instances based on traffic demand.
 - EC2 Instances: EC2 instances running in private subnets with Apache web server.
 
-### Step 7: Clean Up Resources
+### Step 9: Clean Up Resources
 
 To destroy the infrastructure and remove all resources, run:
 
